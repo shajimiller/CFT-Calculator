@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wood CFT Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 40px;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .calculate {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .clear {
+      background-color: #f44336;
+      color: white;
+    }
+    .result {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Wood CFT Calculator</h2>
+    <input type="number" id="length" placeholder="Enter length (in feet)" step="any">
+    <input type="number" id="girth" placeholder="Enter girth (in inches)" step="any">
+    <br>
+    <button class="calculate" onclick="calculateCFT()">Calculate</button>
+    <button class="clear" onclick="clearInputs()">Clear</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateCFT() {
+      const length = parseFloat(document.getElementById('length').value);
+      const girth = parseFloat(document.getElementById('girth').value);
+
+      if (isNaN(length) || isNaN(girth)) {
+        document.getElementById('result').innerText = "Please enter valid numbers.";
+        return;
+      }
+
+      const cft = (length * girth * girth) / 144;
+      const rounded = Math.round(cft * 10) / 10;
+
+      document.getElementById('result').innerText = `CFT: ${rounded}`;
+    }
+
+    function clearInputs() {
+      document.getElementById('length').value = '';
+      document.getElementById('girth').value = '';
+      document.getElementById('result').innerText = '';
+    }
+  </script>
+</body>
+</html>
