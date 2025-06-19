@@ -70,7 +70,7 @@
         return;
       }
 
-      const cft = (length * girth * girth) / 144;
+      const cft = (length * girth * girth) / 2304;
       const rounded = Math.round(cft * 10) / 10;
 
       document.getElementById('result').innerText = `CFT: ${rounded}`;
